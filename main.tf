@@ -28,11 +28,11 @@ resource "docker_image" "nginx" {
 # -> same as 'docker run --name nginx -p8081:80 -d nginx:latest'
 # code-server is a web-based IDE that runs in a container and uses port 8080
 resource "docker_container" "nginx" {
-  name    = "nginx"
+  name    = var.container_name
   image   = docker_image.nginx.image_id
 
   ports {
-    external = 8081
+    external = 9000
     internal = 80
   }
 }
